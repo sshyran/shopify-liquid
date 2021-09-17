@@ -852,7 +852,7 @@ class StandardFiltersTest < Minitest::Test
       { 1 => "bar" },
       ["foo", 123, nil, true, false, Drop, ["foo"], { foo: "bar" }],
     ]
-    (@filters.public_methods - Object.public_methods).each do |method|
+    StandardFilters.public_instance_methods(false).each do |method|
       arg_count = @filters.method(method).arity
       arg_count *= -1 if arg_count < 0
 
